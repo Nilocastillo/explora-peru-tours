@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "@midudev/tailwind-animations";
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/font/Satoshi-Variable.woff2") format("woff2-variations");
+  font-style: normal;
+  font-weight: 100 900; /* Rango completo soportado por la variable font */
+  font-display: swap;
+}
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+
+  --color-primary: #3e593c;
+  --color-secondary: #d09c1c;
+  --color-oscuro: #2c3c2b;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Satoshi", sans-serif;
+}
