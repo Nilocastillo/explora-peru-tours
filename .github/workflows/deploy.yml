@@ -31,4 +31,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/ # Carpeta donde Astro genera el build final
-          server-dir: /public_html # Carpeta remota donde quieres subir los archivos
+          server-dir: /public_html/ # Carpeta remota donde quieres subir los archivos
