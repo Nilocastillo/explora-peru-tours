@@ -1,3 +1,22 @@
+---
+import type { Sponsor } from "@/types/reconocimientos";
+import { Image } from "astro:assets";
+
+interface Props {
+  sponsors: Sponsor[];
+  title?: string;
+  description?: string;
+}
+
+const {
+  sponsors,
+  title = "Reconocidos por la excelencia",
+  description = "Estamos certificados y recomendados por las principales plataformas y entidades del sector turístico.",
+} = Astro.props;
+
+const allSponsors = [...sponsors, ...sponsors];
+---
+
 <section
   class="max-w-7xl px-6 py-10 overflow-hidden w-full relative group mx-auto flex gap-x-5 flex-col"
 >
@@ -5,80 +24,28 @@
     <h2
       class="text-center text-balance text-4xl md:text-5xl text-primary leading-tight mb-3"
     >
-      Reconocidos por la excelencia
+      {title}
     </h2>
     <p class="text-center text-xl text-pretty">
-      Estamos certificados y recomendados por las principales plataformas y
-      entidades del sector turístico.
+      {description}
     </p>
   </div>
 
   <div
-    class="slider-track flex mx-auto gap-x-5 lg:gap-x-24 w-[200%] animate-scroll group-hover:[animation-play-state:paused] px-6"
+    class="slider-track flex mx-auto gap-x-5 lg:gap-x-24 w-[200%] animate-scroll group-hover:[animation-play-state:paused]"
   >
-    <!-- Logos (duplicados para el loop) -->
-    <img
-      src="/reconocimientos/tripadvisor.webp"
-      alt="Logo de Tripadvisor"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/get-your-guide.webp"
-      alt="Logo de Get Your Guide"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/gercetur.webp"
-      alt="Logo de Gercetur"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/compromiso-calidad.webp"
-      alt="Logo de Compromiso de Calidad"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/agencia-registrada.webp"
-      alt="Logo de Agencia Registrada"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-
-    <!-- Duplicados -->
-    <img
-      src="/reconocimientos/tripadvisor.webp"
-      alt="Logo de Tripadvisor"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/get-your-guide.webp"
-      alt="Logo de Get Your Guide"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/gercetur.webp"
-      alt="Logo de Gercetur"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/compromiso-calidad.webp"
-      alt="Logo de Compromiso de Calidad"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
-    <img
-      src="/reconocimientos/agencia-registrada.webp"
-      alt="Logo de Agencia Registrada"
-      loading="lazy"
-      class="h-[100px] mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
-    />
+    {
+      allSponsors.map((sponsor) => (
+        <Image
+          src={sponsor.image}
+          alt={sponsor.alt}
+          layout="constrained"
+          decoding="async"
+          loading="lazy"
+          class="w-28 mr-10 shrink-0 filter grayscale hover:grayscale-0 transition"
+        />
+      ))
+    }
   </div>
 </section>
 
