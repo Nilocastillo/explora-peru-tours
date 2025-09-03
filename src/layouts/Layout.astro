@@ -1,49 +1,57 @@
 ---
-import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+import "@/styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { getLangFromUrl } from "@/i18n/utils";
+import { getI18N } from "@/i18n";
 
 interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  canonical?: string;
 }
 
-const {
-  title = "Explora Perú Tours | Descubre Perú con los mejores guías y paquetes a MACHU PICCHU",
-  description = "Agencia de viajes especializada en tours y paquetes personalizados en Perú. Viajes de aventura, cultura y naturaleza",
-  ogImage = "",
-} = Astro.props;
+const { title, description, ogImage, canonical } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+// Valores finales: props > i18n
+const pageTitle = title ?? i18n.META.TITLE;
+const pageDescription = description ?? i18n.META.DESCRIPTION;
+const pageOgImage = ogImage ?? i18n.META.OG_IMAGE;
+const pageCanonical =
+  canonical ?? `https://www.exploraperutours.com${Astro.url.pathname}`;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Metadatos SEO básicos -->
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="tours en Perú, agencia de viajes Perú, viaje Machu Picchu, trekking Salkantay, montaña de 7 colores, turismo cultural Perú, Explora Perú Tours"
-    />
+    <!-- Metadatos SEO -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={i18n.META.KEYWORDS} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.exploraperutours.com" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={pageCanonical} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={pageOgImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.exploraperutours.com" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:url" content={pageCanonical} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content={pageOgImage} />
 
     <!-- Preload de fuentes -->
     <link
@@ -53,14 +61,23 @@ const {
       type="font/woff2"
       crossorigin
     />
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.exploraperutours.com" />
 
+    <!-- Canonical y sitemap -->
+    <link rel="canonical" href={pageCanonical} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
   </head>
+
   <body>
     <Header />
     <slot />
     <Footer />
-  </body>
+  </body><style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+  </style>
 </html>

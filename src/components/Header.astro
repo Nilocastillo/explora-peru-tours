@@ -1,15 +1,36 @@
 ---
+import LanguageSelector from "@/components/LanguageSelector.astro";
+import HeaderLink from "@/components/HeaderLink.astro";
+import { getI18N } from "@/i18n/index";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+
 const navItems = [
-  { text: "Nosotros", href: "#" },
-  { text: "Paquetes de Viaje", href: "#" },
-  { text: "Tours", href: "#" },
-  { text: "Lugares a visitar", href: "#" },
+  { key: "nav.nosotros", path: "/nosotros/" },
+  { key: "nav.paquetes", path: "/paquetes/" },
+  { key: "nav.tours", path: "/tours/" },
 ];
+const linkBaseClass =
+  "text-xl transition-all duration-300 py-1 px-4 pb-0.5 text-black hover:bg-primary rounded-full hover:text-white";
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 w-full px-6">
-  <nav
-    class="max-w-7xl mx-auto flex justify-between items-center py-8 relative"
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent pt-2 bg-white"
+>
+  <div
+    class="max-w-7xl mx-auto flex justify-around items-center py-10 md:py-8 lg:py-8 relative"
   >
     <!-- Logo -->
     <div class="ashrink-0 logo-container text-white">
@@ -26,26 +47,24 @@ const navItems = [
     </div>
     <!-- Enlaces del menu -->
     <div
-      class="md:flex hidden lg:flex items-center justify-center gap-8 z-10 md:gap-2"
+      class="md:flex hidden lg:block items-center gap-12 space-x-4 md:-space-x-8 lg:space-x-10 lg:ml-10 z-10"
     >
       {
         navItems.map((item) => (
-          <a
-            href={item.href}
-            class="font-medium text-base text-white uppercase transition-all duration-300 py-4 px-4 hover:bg-primary rounded-2 hover:text-white"
-          >
-            {item.text}
-          </a>
+          <HeaderLink class={linkBaseClass} href={translatePath(item.path)}>
+            {t(item.key)}
+          </HeaderLink>
         ))
       }
     </div>
+    <LanguageSelector />
 
     <!-- Botón menú móvil -->
     <button
       aria-label="Abrir menú de navegación"
       aria-controls="mobile-menu"
       aria-expanded="false"
-      class="md:hidden p-2 text-white focus:outline-none z-20 absolute right-6"
+      class="md:hidden p-2 text-primary focus:outline-none z-20 absolute right-6"
       id="mobile-menu-button"
     >
       <svg
@@ -76,30 +95,33 @@ const navItems = [
           d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
-    <div
-      class="hidden md:hidden absolute top-full left-0 right-0 w-full bg-opacity-95 bg-white shadow-lg z-50"
-      id="mobile-menu"
-    >
-      <div class="px-4 pt-4 pb-5 space-y-3 max-w-md mx-auto">
-        {
-          navItems.map((item) => (
-            <a
-              href={item.href}
-              class="block py-2 px-4 font-bebas tracking-wide text-lg text-center text-primary hover:text-secondary"
-            >
-              {item.text}
-            </a>
-          ))
-        }
-      </div>
+  </div>
+
+  <div
+    class="hidden md:hidden absolute top-full left-0 right-0 w-full bg-opacity-95 bg-white shadow-lg z-50"
+    id="mobile-menu"
+  >
+    <div class="px-4 pt-4 pb-5 space-y-3 max-w-md mx-auto">
+      {
+        navItems.map((item) => (
+          <HeaderLink
+            class="block py-2 px-4 tracking-wide text-lg text-center text-primary hover:text-secondary"
+            href={translatePath(item.path)}
+          >
+            {t(item.key)}
+          </HeaderLink>
+        ))
+      }
     </div>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <style>
   :global(.navbar-scrolled) {
+    background-color: white;
     transform: translateY(0);
     transition: all 0.3s ease;
+    border-bottom: 0.5px solid var(--color-primary);
   }
 
   :global(.navbar-scrolled .logo-container img) {
@@ -108,26 +130,6 @@ const navItems = [
 
   nav a img {
     transition: transform 0.3s ease;
-  }
-
-  header {
-    background: transparent;
-    animation: header-blur-scroll 0.3s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 250px;
-  }
-
-  @keyframes header-blur-scroll {
-    0% {
-      backdrop-filter: blur(0px);
-      background: transparent;
-    }
-
-    100% {
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.2);
-      padding-bottom: var(--spacing-6);
-    }
   }
 </style>
 

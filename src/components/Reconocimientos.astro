@@ -2,19 +2,12 @@
 import type { Sponsor } from "@/types/reconocimientos";
 import { Image } from "astro:assets";
 
-interface Props {
-  sponsors: Sponsor[];
-  title?: string;
-  description?: string;
-}
-
-const {
-  sponsors,
-  title = "Reconocidos por la excelencia",
-  description = "Estamos certificados y recomendados por las principales plataformas y entidades del sector turístico.",
-} = Astro.props;
-
+const { sponsors } = Astro.props;
 const allSponsors = [...sponsors, ...sponsors];
+
+import { getI18N } from "@/i18n";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section
@@ -24,10 +17,10 @@ const allSponsors = [...sponsors, ...sponsors];
     <h2
       class="text-center text-balance text-4xl md:text-5xl text-primary leading-tight mb-3"
     >
-      {title}
+      {i18n.RECOGNITION.TITLE}
     </h2>
     <p class="text-center text-xl text-pretty">
-      {description}
+      {i18n.RECOGNITION.DESCRIPTION}
     </p>
   </div>
 
@@ -38,7 +31,11 @@ const allSponsors = [...sponsors, ...sponsors];
       allSponsors.map((sponsor) => (
         <Image
           src={sponsor.image}
-          alt={sponsor.alt}
+          alt={
+            i18n.RECOGNITION.SPONSORS_ALT[
+              sponsor.id as keyof typeof i18n.RECOGNITION.SPONSORS_ALT
+            ]
+          }
           layout="constrained"
           decoding="async"
           loading="lazy"

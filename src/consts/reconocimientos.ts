@@ -9,31 +9,26 @@ export const SPONSORS: Sponsor[] = [
   {
     id: "tripadvisor",
     name: "Tripadvisor",
-    alt: "Logo de Tripadvisor",
     image: Tripadvisor,
   },
   {
     id: "getyourguide",
     name: "Get Your Guide",
-    alt: "Logo de Get Your Guide",
     image: GetYourGuide,
   },
   {
     id: "gercetur",
     name: "Gercetur",
-    alt: "Logo de Gercetur",
     image: Gercetur,
   },
   {
-    id: "compromiso-calidad",
+    id: "compromisocalidad",
     name: "Compromiso Calidad",
-    alt: "Logo de Compromiso de Calidad",
     image: Compromiso,
   },
   {
-    id: "agencia-registrada",
+    id: "agenciaregistrada",
     name: "Agencia Registrada",
-    alt: "Logo de Agencia Registrada",
     image: AgenciaRegistrada,
   },
 ];

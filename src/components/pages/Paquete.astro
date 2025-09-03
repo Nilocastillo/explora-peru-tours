@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getI18N } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout title={i18n.PACKAGES.TITLE} description={i18n.PACKAGES.DESCRIPTION}>
+  <main
+    class="max-w-7xl px-6 py-10 overflow-hidden w-full relative mx-auto flex gap-x-5 flex-col mt-24"
+  >
+    <h1 class="text-7xl font-black">Paquetes</h1>
+  </main>
+</Layout>

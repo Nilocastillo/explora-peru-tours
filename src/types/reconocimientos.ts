@@ -4,8 +4,8 @@ export type SponsorId =
   | "tripadvisor"
   | "getyourguide"
   | "gercetur"
-  | "compromiso-calidad"
-  | "agencia-registrada";
+  | "compromisocalidad"
+  | "agenciaregistrada";
 
 export type SponsorName =
   | "Tripadvisor"
@@ -17,6 +17,5 @@ export type SponsorName =
 export interface Sponsor {
   id: SponsorId;
   name: SponsorName;
-  alt: string;
   image: ImageMetadata;
 }

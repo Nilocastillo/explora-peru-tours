@@ -1,5 +1,8 @@
 ---
+import { getI18N } from "@/i18n";
 
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section class="h-[100dvh] w-full animate-fade hero overflow-hidden">
@@ -10,7 +13,7 @@
     <h1
       class="text-white text-balance text-center font-medium flex items-center gap-5 text-5xl md:text-6xl lg:gap-20 lg:text-8xl font-tomaso tracking-tight"
     >
-      Tu viaje soñado por Perú comienza aqui
+      {i18n.HERO.TITLE}
     </h1>
     <a
       href="https://api.whatsapp.com/send?phone=51979758781"
@@ -18,7 +21,7 @@
       rel="noopener noreferrer"
       aria-label="Visitar perfil de Explora Perú Tours en Whatsapp"
       class="group font-medium uppercase px-4 py-5 bg-primary text-white rounded mt-10 transition hover:bg-oscuro hover:scale-105"
-      >Hablar con un asesor de viaje</a
+      >{i18n.HERO.BUTTON_TEXT}</a
     >
   </section>
 

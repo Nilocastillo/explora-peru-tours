@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
+import Reconocimientos from "@/components/Reconocimientos.astro";
+import { SPONSORS } from "@/consts/reconocimientos";
+
+import { getI18N } from "@/i18n";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout title={i18n.HOME.TITLE} description={i18n.HOME.DESCRIPTION}>
+  <main>
+    <Hero />
+    <Reconocimientos sponsors={SPONSORS} />
+  </main>
+</Layout>

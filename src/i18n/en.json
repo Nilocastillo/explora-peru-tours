@@ -1,0 +1,34 @@
+{
+  "META": {
+    "TITLE": "Explora Peru Tours | Discover Peru with the best guides and packages to MACHU PICCHU",
+    "DESCRIPTION": "Travel agency specialized in customized tours and packages in Peru. Adventure, culture, and nature trips.",
+    "KEYWORDS": "Peru tours, Peru travel agency, Machu Picchu trip, Salkantay trek, Rainbow Mountain, cultural tourism Peru, Explora Peru Tours",
+    "OG_IMAGE": "https://explora-peru.com/og-image.jpg"
+  },
+
+  "HOME": {
+    "TITLE": "Explora Peru Tours - Specialized Travel Agency in Peru",
+    "DESCRIPTION": "Travel agency specialized in custom tours and packages in Peru. Adventure, culture, and nature trips"
+  },
+  "PACKAGES": {
+    "TITLE": "Packages - Explora Peru Tours",
+    "DESCRIPTION": "Discover our travel packages designed to explore Peru in depth"
+  },
+
+  "HERO": {
+    "TITLE": "Your dream trip through Peru starts here",
+    "BUTTON_TEXT": "Talk to a travel advisor"
+  },
+
+  "RECOGNITION": {
+    "TITLE": "Recognized for excellence",
+    "DESCRIPTION": "We are certified and recommended by the leading platforms and entities in the tourism sector.",
+    "SPONSORS_ALT": {
+      "tripadvisor": "Tripadvisor logo",
+      "getyourguide": "Get Your Guide logo",
+      "gercetur": "Gercetur logo",
+      "compromisocalidad": "Quality Commitment logo",
+      "agenciaregistrada": "Registered Agency logo"
+    }
+  }
+}

@@ -9,8 +9,6 @@
   font-display: swap;
 }
 @theme {
-  --font-bebas: "Bebas Neue", sans-serif;
-
   --color-primary: #3e593c;
   --color-secondary: #d09c1c;
   --color-oscuro: #2c3c2b;

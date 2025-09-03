@@ -1,0 +1,34 @@
+{
+  "META": {
+    "TITLE": "Explora Perú Tours | Descubre Perú con los mejores guías y paquetes a MACHU PICCHU",
+    "DESCRIPTION": "Agencia de viajes especializada en tours y paquetes personalizados en Perú. Viajes de aventura, cultura y naturaleza.",
+    "KEYWORDS": "tours en Perú, agencia de viajes Perú, viaje Machu Picchu, trekking Salkantay, montaña de 7 colores, turismo cultural Perú, Explora Perú Tours",
+    "OG_IMAGE": "https://explora-peru.com/og-image.jpg"
+  },
+
+  "HOME": {
+    "TITLE": "Explora Perú Tours - Agencia de viajes especializada en Perú",
+    "DESCRIPTION": "Agencia de viajes especializada en tours y paquetes personalizados en Perú. Viajes de aventura, cultura y naturaleza"
+  },
+  "PACKAGES": {
+    "TITLE": "Paquetes - Explora Perú Tours",
+    "DESCRIPTION": "Descubre nuestros paquetes turísticos diseñados para conocer Perú en profundidad"
+  },
+
+  "HERO": {
+    "TITLE": "Tu viaje soñado por Perú comienza aquí",
+    "BUTTON_TEXT": "Hablar con un asesor de viaje"
+  },
+
+  "RECOGNITION": {
+    "TITLE": "Reconocidos por la excelencia",
+    "DESCRIPTION": "Estamos certificados y recomendados por las principales plataformas y entidades del sector turístico.",
+    "SPONSORS_ALT": {
+      "tripadvisor": "Logo de Tripadvisor",
+      "getyourguide": "Logo de Get Your Guide",
+      "gercetur": "Logo de Gercetur",
+      "compromisocalidad": "Logo de Compromiso de Calidad",
+      "agenciaregistrada": "Logo de Agencia Registrada"
+    }
+  }
+}

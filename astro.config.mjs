@@ -9,6 +9,13 @@ export default defineConfig({
     responsiveStyles: true, // activa estilos responsivos para <Image />
     layout: "constrained",
   },
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
